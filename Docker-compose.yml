@@ -1,7 +1,19 @@
 version: "3.8"
 
 services:
-  webNotes:
+
+  client:
+    build: ./client/
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/usr/src/
+
+    depends_on:
+      - webnotes
+    command: npm run dev
+
+  webnotes:
     build: ./server/
     ports:
       - "3000:3000"
