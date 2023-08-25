@@ -6,22 +6,17 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to='/'>
-            shopi
+            login
           </NavLink>
         </li>
         <li>
           <NavLink to='/'>
-            all
+            go out
           </NavLink>
         </li>
         <li>
           <NavLink to='/'>
             clothes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/'>
-            electronics
           </NavLink>
         </li>
       </ul>
