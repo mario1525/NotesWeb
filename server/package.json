@@ -5,7 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint",
+    "migrations:generate": "sequelize-cli migration:generate --name",
+    "migrations:run": "sequelize-cli db:migrate",
+    "migrations:revert": "sequelize-cli db:migrate:undo",
+    "lint:router": "eslint routes/**",
+    "lint:services": "eslint services/**",
+    "lint:db": "eslint db/**",
+    "lint:middlewares": "eslint middlewares/**",
+    "lint:schemas": "eslint schemas/**",
+    "lint:services:fix": "eslint services/** --fix",
+    "lint:db:fix": "eslint db/** --fix",
+    "lint:middlewares:fix": "eslint middlewares/** --fix",
+    "lint:schemas:fix": "eslint schemas/** --fix",
+    "lint:index:fix": "eslint index.js --fix",
+    "lint:router:fix": "eslint routes/** --fix"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +29,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "sequelize-cli": "^6.6.1"
   },
   "devDependencies": {
     "eslint": "^8.47.0",
