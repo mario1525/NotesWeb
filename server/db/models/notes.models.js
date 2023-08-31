@@ -2,7 +2,7 @@ const { Model, DataTypes, Sequelize } = require('sequelize');
 
 const { CUSTOMER_TABLE } = require('./customer.models');
 
-const NOTES_MODEL = 'notes';
+const NOTES_TABLE = 'notes';
 
 const NotesSchema = {
   id: {
@@ -40,17 +40,17 @@ const NotesSchema = {
 
 class Note extends Model {
   static associate(models) {
-    this.belongsTo(models.customer, { as: 'customer' });
+    this.belongsTo(models.Customer, { as: 'customer' });
   }
 
   static config(sequelize) {
     return {
       sequelize,
-      tableName: NOTES_MODEL,
+      tableName: NOTES_TABLE,
       modelName: 'Note',
       timestamps: false,
     };
   }
 }
 
-module.exports = { Note, NotesSchema, NOTES_MODEL };
+module.exports = { Note, NotesSchema, NOTES_TABLE };
