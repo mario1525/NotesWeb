@@ -1,28 +1,26 @@
 version: "3.8"
 
 services:
-
   client:
     build: ./client/
     ports:
       - "5173:5173"
     volumes:
-      - .:/usr/src/
-
+      - ./client:/usr/src/
     depends_on:
       - webnotes
-    command: npm run dev
+    command: sh -c "cd /usr/src/ && npm run dev"
+
 
   webnotes:
     build: ./server/
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/src/
-
+      - ./server:/usr/src/
     depends_on:
       - postgres
-    command: npm run dev
+    command: sh -c "cd /usr/src/ && npm run dev"
 
   postgres:
     image: postgres
@@ -31,7 +29,7 @@ services:
       - DATABASE_HOST=127.0.0.1
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres234
-      - POSTGRES_DB=my_store
+      - POSTGRES_DB=notes
     ports:
       - "5432:5432"
     volumes:

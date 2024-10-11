@@ -1,10 +1,22 @@
 const express = require('express');
 const cors = require('cors');
 
+const RouteApi = require('./routes/index');
+
 const app = express();
 const Port = process.env.PORT || 3000;
 
+const {
+  logErrors,
+  errorHandler,
+  boomErrorHandler,
+} = require('./middlewares/error.handler');
+
 app.use(express.json());
+
+app.use(logErrors);
+app.use(errorHandler);
+app.use(boomErrorHandler);
 
 // cors
 const whiteList = ['https//:localhost:3000'];
@@ -18,6 +30,8 @@ const options = {
   },
 };
 app.use(cors(options));
+
+RouteApi(app);
 
 app.get('/', (req, res) => {
   res.json({
